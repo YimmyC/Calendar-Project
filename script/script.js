@@ -1,6 +1,5 @@
 const today = dayjs();
 $("#currentDay").text(today.format("MMM D, YYYY"));
-
 const currentHour = dayjs().hour();
 let hour9El = $("#hour-9");
 let hour10El = $("#hour-10");
@@ -12,6 +11,15 @@ let hour3El = $("#hour-3");
 let hour4El = $("#hour-4");
 let hour5El = $("#hour-5");
 console.log(currentHour);
+let saveBtn9 = $("#9save");
+let saveBtn10 = $("#10save");
+let saveBtn11 = $("#11save");
+let saveBtn12 = $("#12save");
+let saveBtn1 = $("#1save");
+let saveBtn2 = $("#2save");
+let saveBtn3 = $("#3save");
+let saveBtn4 = $("#4save");
+let saveBtn5 = $("#5save");
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
@@ -58,7 +66,7 @@ $(function () {
     hour3El.addClass("future");
     hour4El.addClass("future");
     hour5El.addClass("future");
-  } else if (currentHour === 1) {
+  } else if (currentHour === 13) {
     hour9El.addClass("past");
     hour10El.addClass("past");
     hour11El.addClass("past");
@@ -68,7 +76,7 @@ $(function () {
     hour3El.addClass("future");
     hour4El.addClass("future");
     hour5El.addClass("future");
-  } else if (currentHour === 2) {
+  } else if (currentHour === 14) {
     hour9El.addClass("past");
     hour10El.addClass("past");
     hour11El.addClass("past");
@@ -78,7 +86,7 @@ $(function () {
     hour3El.addClass("future");
     hour4El.addClass("future");
     hour5El.addClass("future");
-  } else if (currentHour === 3) {
+  } else if (currentHour === 15) {
     hour9El.addClass("past");
     hour10El.addClass("past");
     hour11El.addClass("past");
@@ -88,7 +96,7 @@ $(function () {
     hour3El.addClass("present");
     hour4El.addClass("future");
     hour5El.addClass("future");
-  } else if (currentHour === 4) {
+  } else if (currentHour === 16) {
     hour9El.addClass("past");
     hour10El.addClass("past");
     hour11El.addClass("past");
@@ -98,7 +106,7 @@ $(function () {
     hour3El.addClass("past");
     hour4El.addClass("present");
     hour5El.addClass("future");
-  } else if (currentHour === 5) {
+  } else if (currentHour === 17) {
     hour9El.addClass("past");
     hour10El.addClass("past");
     hour11El.addClass("past");
@@ -121,4 +129,32 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
+});
+
+saveBtn9.on("click", function () {
+  console.log("i clicked");
+});
+saveBtn10.on("click", function () {
+  console.log("i clicked");
+});
+saveBtn11.on("click", function () {
+  console.log("i clicked");
+});
+saveBtn12.on("click", function () {
+  console.log("i clicked");
+});
+saveBtn1.on("click", function () {
+  console.log("i clicked");
+});
+saveBtn2.on("click", function () {
+  console.log("i clicked");
+});
+saveBtn3.on("click", function () {
+  console.log("i clicked");
+});
+saveBtn4.on("click", function () {
+  console.log("i clicked");
+});
+saveBtn5.on("click", function () {
+  console.log("i clicked");
 });
