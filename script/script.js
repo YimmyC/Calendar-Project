@@ -39,6 +39,11 @@ function init() {
   printTask10Data();
   printTask11Data();
   printTask12Data();
+  printTask1Data();
+  printTask2Data();
+  printTask3Data();
+  printTask4Data();
+  printTask5Data();
 }
 // reads tasks
 function readTasks9FromStorage() {
@@ -88,6 +93,66 @@ function readTasks12FromStorage() {
 
   return tasks12;
 }
+
+function readTasks1FromStorage() {
+  var tasks1 = localStorage.getItem("tasks1");
+  if (tasks1) {
+    tasks1 = JSON.parse(tasks1);
+  } else {
+    tasks1 = [];
+  }
+  console.log("reading");
+
+  return tasks1;
+}
+
+function readTasks2FromStorage() {
+  var tasks2 = localStorage.getItem("tasks2");
+  if (tasks2) {
+    tasks2 = JSON.parse(tasks2);
+  } else {
+    tasks2 = [];
+  }
+  console.log("reading");
+
+  return tasks2;
+}
+
+function readTasks3FromStorage() {
+  var tasks3 = localStorage.getItem("tasks3");
+  if (tasks3) {
+    tasks3 = JSON.parse(tasks3);
+  } else {
+    tasks3 = [];
+  }
+  console.log("reading");
+
+  return tasks3;
+}
+
+function readTasks4FromStorage() {
+  var tasks4 = localStorage.getItem("tasks4");
+  if (tasks4) {
+    tasks4 = JSON.parse(tasks4);
+  } else {
+    tasks4 = [];
+  }
+  console.log("reading");
+
+  return tasks4;
+}
+
+function readTasks5FromStorage() {
+  var tasks5 = localStorage.getItem("tasks5");
+  if (tasks5) {
+    tasks5 = JSON.parse(tasks5);
+  } else {
+    tasks5 = [];
+  }
+  console.log("reading");
+
+  return tasks5;
+}
 // saves tasks
 function saveTasks9ToStorage(tasks9) {
   localStorage.setItem("tasks9", JSON.stringify(tasks9));
@@ -103,6 +168,26 @@ function saveTasks11ToStorage(tasks11) {
 
 function saveTasks12ToStorage(tasks12) {
   localStorage.setItem("tasks12", JSON.stringify(tasks12));
+}
+
+function saveTasks1ToStorage(tasks1) {
+  localStorage.setItem("tasks1", JSON.stringify(tasks1));
+}
+
+function saveTasks2ToStorage(tasks2) {
+  localStorage.setItem("tasks2", JSON.stringify(tasks2));
+}
+
+function saveTasks3ToStorage(tasks3) {
+  localStorage.setItem("tasks3", JSON.stringify(tasks3));
+}
+
+function saveTasks4ToStorage(tasks4) {
+  localStorage.setItem("tasks4", JSON.stringify(tasks4));
+}
+
+function saveTasks5ToStorage(tasks5) {
+  localStorage.setItem("tasks5", JSON.stringify(tasks5));
 }
 // displays tasks
 function printTask9Data() {
@@ -155,6 +240,71 @@ function printTask12Data() {
 
   // $("#hour-12").append("<p>" + JSON.stringify(tasks) + "</p>");
   document.getElementById("12field").value += JSON.stringify(tasks12);
+}
+
+function printTask1Data() {
+  // get projects from localStorage
+  var tasks1 = readTasks1FromStorage();
+
+  console.log(tasks1);
+  tasks1.sort(function (a) {
+    return a.task;
+  });
+
+  // $("#hour-1").append("<p>" + JSON.stringify(tasks) + "</p>");
+  document.getElementById("1field").value += JSON.stringify(tasks1);
+}
+
+function printTask2Data() {
+  // get projects from localStorage
+  var tasks2 = readTasks2FromStorage();
+
+  console.log(tasks2);
+  tasks2.sort(function (a) {
+    return a.task;
+  });
+
+  // $("#hour-2").append("<p>" + JSON.stringify(tasks) + "</p>");
+  document.getElementById("2field").value += JSON.stringify(tasks2);
+}
+
+function printTask3Data() {
+  // get projects from localStorage
+  var tasks3 = readTasks3FromStorage();
+
+  console.log(tasks3);
+  tasks3.sort(function (a) {
+    return a.task;
+  });
+
+  // $("#hour-3").append("<p>" + JSON.stringify(tasks) + "</p>");
+  document.getElementById("3field").value += JSON.stringify(tasks3);
+}
+
+function printTask4Data() {
+  // get projects from localStorage
+  var tasks4 = readTasks4FromStorage();
+
+  console.log(tasks4);
+  tasks4.sort(function (a) {
+    return a.task;
+  });
+
+  // $("#hour-4").append("<p>" + JSON.stringify(tasks) + "</p>");
+  document.getElementById("4field").value += JSON.stringify(tasks4);
+}
+
+function printTask5Data() {
+  // get projects from localStorage
+  var tasks5 = readTasks5FromStorage();
+
+  console.log(tasks5);
+  tasks5.sort(function (a) {
+    return a.task;
+  });
+
+  // $("#hour-5").append("<p>" + JSON.stringify(tasks) + "</p>");
+  document.getElementById("5field").value += JSON.stringify(tasks5);
 }
 
 // Time of day class function
@@ -325,18 +475,83 @@ saveBtn12.on("click", function (event) {
   // print project data
   printTask12Data();
 });
-saveBtn1.on("click", function () {
-  console.log("i clicked");
+saveBtn1.on("click", function (event) {
+  event.preventDefault();
+
+  // read user input from the form
+  var taskInput = textField1.val().trim();
+
+  var newTask = { Task: taskInput };
+
+  // add project to local storage
+  var tasks = readTasks1FromStorage();
+  tasks.push(newTask);
+  saveTasks1ToStorage(tasks);
+
+  // print project data
+  printTask1Data();
 });
-saveBtn2.on("click", function () {
-  console.log("i clicked");
+saveBtn2.on("click", function (event) {
+  event.preventDefault();
+
+  // read user input from the form
+  var taskInput = textField2.val().trim();
+
+  var newTask = { Task: taskInput };
+
+  // add project to local storage
+  var tasks = readTasks2FromStorage();
+  tasks.push(newTask);
+  saveTasks2ToStorage(tasks);
+
+  // print project data
+  printTask2Data();
 });
-saveBtn3.on("click", function () {
-  console.log("i clicked");
+saveBtn3.on("click", function (event) {
+  event.preventDefault();
+
+  // read user input from the form
+  var taskInput = textField3.val().trim();
+
+  var newTask = { Task: taskInput };
+
+  // add project to local storage
+  var tasks = readTasks3FromStorage();
+  tasks.push(newTask);
+  saveTasks3ToStorage(tasks);
+
+  // print project data
+  printTask3Data();
 });
-saveBtn4.on("click", function () {
-  console.log("i clicked");
+saveBtn4.on("click", function (event) {
+  event.preventDefault();
+
+  // read user input from the form
+  var taskInput = textField4.val().trim();
+
+  var newTask = { Task: taskInput };
+
+  // add project to local storage
+  var tasks = readTasks4FromStorage();
+  tasks.push(newTask);
+  saveTasks4ToStorage(tasks);
+
+  // print project data
+  printTask4Data();
 });
-saveBtn5.on("click", function () {
-  console.log("i clicked");
+saveBtn5.on("click", function (event) {
+  event.preventDefault();
+
+  // read user input from the form
+  var taskInput = textField5.val().trim();
+
+  var newTask = { Task: taskInput };
+
+  // add project to local storage
+  var tasks = readTasks5FromStorage();
+  tasks.push(newTask);
+  saveTasks5ToStorage(tasks);
+
+  // print project data
+  printTask5Data();
 });
