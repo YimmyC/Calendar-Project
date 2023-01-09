@@ -20,9 +20,41 @@ let saveBtn2 = $("#2save");
 let saveBtn3 = $("#3save");
 let saveBtn4 = $("#4save");
 let saveBtn5 = $("#5save");
+let textField9 = $("#9field");
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+function readTasksFromStorage() {
+  var tasks = localStorage.getItem("tasks");
+  if (tasks) {
+    tasks = JSON.parse(tasks);
+  } else {
+    tasks = [];
+  }
+  console.log("reading");
+
+  return tasks;
+}
+
+function saveTasksToStorage(tasks) {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function printTaskData() {
+  // get projects from localStorage
+  var tasks = readTasksFromStorage();
+
+  console.log(tasks);
+  tasks.sort(function (a) {
+    return a.task;
+  });
+
+  // $("#hour-9").append("<p>" + JSON.stringify(tasks) + "</p>");
+  document.getElementById("9field").value += JSON.stringify(tasks);
+}
+
 // Time of day class function
 $(function () {
   if (currentHour === 9) {
@@ -118,12 +150,6 @@ $(function () {
     hour5El.addClass("present");
   }
 
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
@@ -131,8 +157,21 @@ $(function () {
   //
 });
 
-saveBtn9.on("click", function () {
-  console.log("i clicked");
+saveBtn9.on("click", function (event) {
+  event.preventDefault();
+
+  // read user input from the form
+  var taskInput = textField9.val().trim();
+
+  var newTask = { Task: taskInput };
+
+  // add project to local storage
+  var tasks = readTasksFromStorage();
+  tasks.push(newTask);
+  saveTasksToStorage(tasks);
+
+  // print project data
+  printTaskData();
 });
 saveBtn10.on("click", function () {
   console.log("i clicked");
