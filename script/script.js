@@ -199,7 +199,6 @@ function printTask9Data() {
     return a.task;
   });
 
-  // $("#hour-9").append("<p>" + JSON.stringify(tasks) + "</p>");
   document.getElementById("9field").value += JSON.stringify(tasks9);
 }
 
